@@ -107,6 +107,12 @@ def print_syllabus(course):
       print ''
       print 'Precepts:'
       print ''
+      print 'TODO'
+      print ''
+      print 'Postcepts:'
+      print ''
+      print 'TODO'
+      print ''
 
 
 
