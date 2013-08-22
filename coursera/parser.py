@@ -91,7 +91,7 @@ def print_syllabus(course):
   print 'Title:', course.name
   print 'Instructor:', course.instructor
   print 'Organization:', course.org
-  print 'Website:', course.website
+  print 'Website: [%s](%s)' % (course.website, course.website)
   print ''
 
   for section in course.sections:
