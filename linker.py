@@ -2,7 +2,7 @@
 
 import re
 
-link_prefix = 'https://athena.ai/'
+link_prefix = 'https://alpha.athena.ai/'
 
 
 def athena_link(name):
