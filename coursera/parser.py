@@ -34,6 +34,7 @@ class Course(Parsable):
 
     # course name
     self.name = text(sel.find('.course-topbanner-name'))
+    self.code = ''
 
     # organization
     self.org = sel.find('.course-topbanner').find('img').attr('alt').strip()
@@ -43,6 +44,7 @@ class Course(Parsable):
     self.instructor = text(sel.find('.course-topbanner-instructor'))
     if self.instructor.startswith('by '):
       self.instructor = self.instructor[3:]
+    self.author = self.instructor
 
     # sections
     self.sections = map(Section, sel.find('.course-item-list-header').items())
@@ -88,10 +90,21 @@ def print_syllabus(course):
 
   print '# coursera /', course.name
   print ''
-  print 'Title:', course.name
-  print 'Instructor:', course.instructor
-  print 'Organization:', course.org
-  print 'Website: [%s](%s)' % (course.website, course.website)
+  print '- **Code**:', course.code
+  print '- **Title**:', course.name
+  print '- **Author**:', course.author
+  print '- **Instructor**:', course.instructor
+  print '- **Institution**:', course.org
+  print '- **Course Website**: [%s](%s)' % (course.website, course.website)
+  print ''
+  print ''
+  print '## Table of Contents'
+  print ''
+  print '[tableofcontents]'
+  print ''
+  print '## Prerequisites'
+  print ''
+  print '- TODO'
   print ''
 
   for section in course.sections:
@@ -105,13 +118,15 @@ def print_syllabus(course):
       for link_name, link_href in item.links.items():
         print '[%s](%s)' % (link_name, link_href)
       print ''
-      print 'Precepts:'
+      print 'Concepts Required:'
       print ''
-      print 'TODO'
+      print '- TODO'
       print ''
-      print 'Postcepts:'
+      print 'Concepts Taught:'
       print ''
-      print 'TODO'
+      print '- TODO'
+      print ''
+      print ''
       print ''
 
 
